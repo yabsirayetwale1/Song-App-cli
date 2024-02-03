@@ -6,10 +6,11 @@ const App = () => {
 
   return (
     <BrowserRouter>
-    <Routes>
+{/*     <Routes>
     <Route path='/' Component={()=><Navigate to={'/songs'}/>}/>
     <Route path='/songs' Component={Home}/>
-      </Routes>
+      </Routes> */}
+      <Home/>
     </BrowserRouter>
   );
 };

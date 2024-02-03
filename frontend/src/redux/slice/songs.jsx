@@ -10,7 +10,6 @@ const songs = createSlice({
     },
     addSongSlice: (state, action) => {
       state.songs.push(action.payload);
-      console.log("action.payload")
     },
     editSongSlice: (state, action) => {
       state.songs = state.songs.map((song) =>

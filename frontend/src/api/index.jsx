@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-axios.defaults.baseURL = "https://song-app-api.vercel.app"
+axios.defaults.baseURL = "https://song-apis.vercel.app/"
 
 export const getSongsAPI = async () => axios.get('/')
 

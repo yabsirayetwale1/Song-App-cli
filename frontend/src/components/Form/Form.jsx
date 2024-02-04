@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { CREATE_SONG, UPDATE_SONG_BY_ID } from "../../redux/actionTypes";
 import FileBase from "react-file-base64";
 import styled from "@emotion/styled";
-import { space, layout} from "styled-syste,";
+import { space, layout} from "styled-system";
 import {useNavigate} from 'react-router-dom'
 
 const FormContainer = styled(Paper)(space,{borderRadius: '10px',});
@@ -33,10 +33,10 @@ const Form = ({ currentId, setCurrentId }) => {
   const dispatch = useDispatch();
   const handleSubmit =async (e) => {
     e.preventDefault();
-    // if(!postData.audio){
-    //   alert ("upload mp3 is required")
-    // }
- 
+    if(!postData.audio){
+      alert ("upload mp3 is required")
+    }
+  else{
     if( currentId ){
       dispatch({ type: UPDATE_SONG_BY_ID,currentId , song: postData})
       history('/songs')
@@ -45,7 +45,7 @@ const Form = ({ currentId, setCurrentId }) => {
        dispatch({ type: CREATE_SONG,song: postData })
        history('/')
      }
-  
+  }
     clear();
   };
 
@@ -151,5 +151,3 @@ const Form = ({ currentId, setCurrentId }) => {
 };
 
 export default Form;
-
-

@@ -162,7 +162,7 @@ import styled from "@emotion/styled";
 import { space, layout } from "styled-system";
 import { useNavigate } from 'react-router-dom'
 
-const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB (adjust as needed)
+const MAX_FILE_SIZE = 12 * 1024; // 12 KB
 
 const FormContainer = styled(Paper)(space, { borderRadius: '10px', });
 const FormTextField = styled(TextField)(space);

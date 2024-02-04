@@ -229,10 +229,10 @@ const Form = ({ currentId, setCurrentId }) => {
   const dispatch = useDispatch();
   const handleSubmit =async (e) => {
     e.preventDefault();
-    if(!postData.audio){
-      alert ("upload mp3 is required")
-    }
-  else{
+    // if(!postData.audio){
+    //   alert ("upload mp3 is required")
+    // }
+ 
     if( currentId ){
       dispatch({ type: UPDATE_SONG_BY_ID,currentId , song: postData})
       history('/songs')
@@ -241,7 +241,7 @@ const Form = ({ currentId, setCurrentId }) => {
        dispatch({ type: CREATE_SONG,song: postData })
        history('/')
      }
-  }
+  
     clear();
   };
 

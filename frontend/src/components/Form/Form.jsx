@@ -30,9 +30,6 @@ const Form = ({ currentId, setCurrentId }) => {
     }
   }, [song]);
 
-
-  
-
   // Function to compress the Base64 audio data
 const compressBase64 = async (base64Data) => {
   // Convert the Base64 data to a Blob
@@ -74,15 +71,7 @@ const handleFileUpload = async ({ base64 }) => {
     // Handle the error
   }
 };
-
-
-
-
-
-
-
-  
-  const dispatch = useDispatch();
+const dispatch = useDispatch();
   const handleSubmit =async (e) => {
     e.preventDefault();
     // if(!postData.audio){
@@ -174,14 +163,11 @@ const handleFileUpload = async ({ base64 }) => {
               setPostData({ ...postData, audio: base64 })
             }
           /> */}
-<FileBase
-  type="file"
-  multiple={false}
-  onDone={handleFileUpload}
-/>
-
-
-           
+           <FileBase
+            type="file"
+             multiple={false}
+             onDone={handleFileUpload}
+           />
          </Container>
         </div>
         <FormButton

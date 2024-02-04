@@ -30,6 +30,58 @@ const Form = ({ currentId, setCurrentId }) => {
     }
   }, [song]);
 
+
+  
+
+  // Function to compress the Base64 audio data
+const compressBase64 = async (base64Data) => {
+  // Convert the Base64 data to a Blob
+  const blob = await fetch(base64Data).then((res) => res.blob());
+
+  // Create a new FileReader
+  const reader = new FileReader();
+
+  return new Promise((resolve, reject) => {
+    // Set the FileReader's onload event handler
+    reader.onload = () => {
+      const compressedBase64 = reader.result;
+
+      // Resolve with the compressed Base64 data
+      resolve(compressedBase64);
+    };
+
+    // Set the FileReader's onerror event handler
+    reader.onerror = () => {
+      // Reject with an error message
+      reject(new Error('Failed to compress audio data.'));
+    };
+
+    // Read the blob data as Data URL (Base64)
+    reader.readAsDataURL(blob);
+  });
+};
+
+//
+const handleFileUpload = async ({ base64 }) => {
+  try {
+    // Compress the Base64 audio data
+    const compressedBase64 = await compressBase64(base64);
+
+    // Set the compressed data in the postData state
+    setPostData({ ...postData, audio: compressedBase64 });
+  } catch (error) {
+    console.error(error);
+    // Handle the error
+  }
+};
+
+
+
+
+
+
+
+  
   const dispatch = useDispatch();
   const handleSubmit =async (e) => {
     e.preventDefault();
@@ -115,13 +167,21 @@ const Form = ({ currentId, setCurrentId }) => {
           <div style={{position:'relative',color:'blue',top:'20px',zIndex:'5',width:'90px',height:'20px',background:'white'}}>
             upload mp3
           </div>
-         <FileBase
+{/*          <FileBase
             type="file"
             multiple={false}
             onDone={({ base64 }) =>
               setPostData({ ...postData, audio: base64 })
             }
-          />
+          /> */}
+<FileBase
+  type="file"
+  multiple={false}
+  onDone={handleFileUpload}
+/>
+
+
+           
          </Container>
         </div>
         <FormButton
